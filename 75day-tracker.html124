@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srish 75 Day Challenge</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Srish 75">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --ink:#2B1A20;
+  --ink-mid:#7A4A5A;
+  --ink-soft:#C09AAA;
+  --ink-faint:#EDD8DF;
+  --blush:#FAF0F3;
+  --rose:#F2A8BB;
+  --rose-deep:#D4607A;
+  --rose-pale:#FDE8EF;
+  --mauve:#E2B8C8;
+  --lilac:#F0E6F6;
+  --cream:#FFFAF9;
+  --white:#FFFFFF;
+  --done-fill:#F7D6E0;
+  --done-border:#E8A0B8;
+}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  min-height:100vh;
+}
+
+/* ── HEADER ── */
+.header{
+  background:var(--white);
+  border-bottom:1px solid var(--ink-faint);
+  padding:1.25rem 2rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+}
+.logo{
+  display:flex;flex-direction:column;
+}
+.logo-script{
+  font-family:'Pinyon Script',cursive;
+  font-size:2rem;
+  color:var(--rose-deep);
+  line-height:1;
+  letter-spacing:0.02em;
+}
+.logo-sub{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.65rem;
+  color:var(--ink-soft);
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  margin-top:-2px;
+}
+.streak-pill{
+  display:flex;align-items:center;gap:10px;
+  background:var(--rose-pale);
+  border:1.5px solid var(--rose);
+  border-radius:99px;
+  padding:0.5rem 1.25rem;
+}
+.streak-flame{font-size:1.1rem;}
+.streak-info{text-align:center;}
+.streak-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.7rem;font-weight:600;
+  color:var(--rose-deep);
+  line-height:1;
+}
+.streak-label{
+  font-size:0.6rem;color:var(--ink-soft);
+  letter-spacing:0.1em;text-transform:uppercase;
+}
+
+/* ── MAIN ── */
+.main{max-width:860px;margin:0 auto;padding:2rem 1.5rem;}
+
+/* ── QUOTE ── */
+.quote-block{
+  border-left:3px solid var(--rose);
+  padding:0.75rem 0 0.75rem 1.25rem;
+  margin-bottom:2.5rem;
+}
+.quote-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-style:italic;font-weight:300;
+  color:var(--ink-mid);
+  line-height:1.55;
+}
+.quote-meta{
+  font-size:0.65rem;color:var(--ink-soft);
+  letter-spacing:0.1em;text-transform:uppercase;
+  margin-top:6px;
+}
+
+/* ── SECTION LABEL ── */
+.label{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-weight:600;
+  color:var(--ink);
+  letter-spacing:0.02em;
+  margin-bottom:0.85rem;
+  display:flex;align-items:center;gap:8px;
+}
+.label-tag{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.65rem;font-weight:400;
+  color:var(--ink-soft);
+  letter-spacing:0.08em;text-transform:uppercase;
+}
+
+/* ── PROGRESS ── */
+.progress-section{margin-bottom:2.5rem;}
+.progress-track{
+  background:var(--ink-faint);
+  border-radius:99px;height:8px;overflow:hidden;
+}
+.progress-fill{
+  height:100%;background:var(--rose);
+  border-radius:99px;transition:width 0.7s cubic-bezier(.4,0,.2,1);
+}
+.progress-meta{
+  display:flex;justify-content:space-between;
+  margin-top:7px;
+  font-size:0.7rem;color:var(--ink-soft);
+}
+
+/* ── STATS ── */
+.stats-row{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+  margin-bottom:2.5rem;
+}
+.stat{
+  background:var(--white);
+  border:1px solid var(--ink-faint);
+  border-radius:16px;
+  padding:1.1rem 1rem;
+  text-align:center;
+}
+.stat-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.2rem;font-weight:600;
+  color:var(--rose-deep);line-height:1;
+}
+.stat-l{
+  font-size:0.62rem;color:var(--ink-soft);
+  letter-spacing:0.09em;text-transform:uppercase;margin-top:5px;
+}
+
+/* ── DAY GRID ── */
+.grid-section{margin-bottom:2.5rem;}
+.day-grid{
+  display:grid;
+  grid-template-columns:repeat(15,1fr);
+  gap:6px;
+}
+.day-cell{
+  aspect-ratio:1;
+  border-radius:8px;
+  background:var(--white);
+  border:1.5px solid var(--ink-faint);
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.58rem;font-weight:500;
+  color:var(--ink-soft);
+  transition:transform 0.14s ease,border-color 0.14s,background 0.14s;
+  position:relative;
+}
+.day-cell:hover:not(.future){transform:scale(1.13);border-color:var(--rose);}
+.day-cell.complete{background:var(--rose);border-color:var(--rose-deep);color:var(--white);}
+.day-cell.partial{background:var(--done-fill);border-color:var(--done-border);color:var(--ink-mid);}
+.day-cell.today{border:2px solid var(--rose-deep) !important;color:var(--rose-deep);font-weight:600;}
+.day-cell.future{opacity:0.35;cursor:default;}
+
+.legend{display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.75rem;}
+.leg{display:flex;align-items:center;gap:5px;font-size:0.68rem;color:var(--ink-soft);}
+.leg-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
+
+/* ── HABIT TABLE ── */
+.habit-section{margin-bottom:2rem;}
+.habit-row{
+  display:flex;align-items:center;gap:12px;
+  padding:0.6rem 0;
+  border-bottom:1px solid var(--ink-faint);
+}
+.habit-name{font-size:0.82rem;color:var(--ink);flex:1;}
+.habit-bar-bg{width:110px;height:5px;background:var(--ink-faint);border-radius:99px;flex-shrink:0;}
+.habit-bar-fill{height:100%;background:var(--rose);border-radius:99px;}
+.habit-ct{font-size:0.7rem;color:var(--ink-soft);min-width:34px;text-align:right;}
+
+/* ── PANEL OVERLAY ── */
+.overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(43,26,32,0.38);
+  z-index:200;
+  align-items:flex-end;justify-content:center;
+  padding:0 1rem;
+}
+.overlay.open{display:flex;}
+
+.sheet{
+  background:var(--white);
+  border-radius:28px 28px 0 0;
+  padding:2rem 1.75rem 2.5rem;
+  width:100%;max-width:540px;
+  max-height:90vh;overflow-y:auto;
+  position:relative;
+}
+.sheet-close{
+  position:absolute;top:1.25rem;right:1.25rem;
+  width:30px;height:30px;border-radius:50%;
+  background:var(--ink-faint);border:none;
+  cursor:pointer;
+  font-size:0.85rem;color:var(--ink-mid);
+  display:flex;align-items:center;justify-content:center;
+}
+.sheet-day{
+  font-family:'Pinyon Script',cursive;
+  font-size:2.4rem;color:var(--rose-deep);
+  line-height:1;margin-bottom:3px;
+}
+.sheet-date{
+  font-size:0.68rem;color:var(--ink-soft);
+  letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.75rem;
+}
+.sheet-progress{
+  display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;
+}
+.sheet-progress-track{flex:1;background:var(--ink-faint);border-radius:99px;height:6px;}
+.sheet-progress-fill{height:100%;background:var(--rose);border-radius:99px;transition:width 0.3s;}
+.sheet-pct{font-size:0.72rem;color:var(--ink-soft);min-width:32px;text-align:right;}
+
+/* ── TASK PILLS inside sheet ── */
+.tasks-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:1.75rem;
+}
+.task-pill{
+  display:flex;align-items:center;gap:10px;
+  padding:0.8rem 1rem;
+  border-radius:14px;
+  border:1.5px solid var(--ink-faint);
+  background:var(--white);
+  cursor:pointer;
+  transition:background 0.15s,border-color 0.15s;
+  user-select:none;
+}
+.task-pill:hover{background:var(--rose-pale);border-color:var(--rose);}
+.task-pill.done{
+  background:var(--done-fill);
+  border-color:var(--done-border);
+}
+.pill-circle{
+  width:22px;height:22px;flex-shrink:0;
+  border-radius:50%;
+  border:1.5px solid var(--mauve);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.7rem;color:transparent;
+  transition:all 0.18s;
+}
+.task-pill.done .pill-circle{
+  background:var(--rose-deep);
+  border-color:var(--rose-deep);
+  color:var(--white);
+}
+.pill-label{
+  font-size:0.8rem;line-height:1.3;
+  color:var(--ink);
+}
+.task-pill.done .pill-label{color:var(--ink-mid);}
+
+/* ── NOTES ── */
+.notes-label{
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.95rem;font-style:italic;
+  color:var(--ink-mid);
+  margin-bottom:8px;
+}
+.notes-field{
+  width:100%;
+  border:1.5px solid var(--ink-faint);
+  border-radius:14px;
+  padding:0.85rem 1rem;
+  font-family:'DM Sans',sans-serif;
+  font-size:0.85rem;
+  color:var(--ink);
+  background:var(--blush);
+  resize:vertical;min-height:80px;
+  outline:none;
+  margin-bottom:1.25rem;
+  transition:border-color 0.15s;
+}
+.notes-field:focus{border-color:var(--rose);}
+.save-btn{
+  width:100%;
+  background:var(--rose-deep);
+  color:var(--white);
+  border:none;
+  border-radius:14px;
+  padding:0.9rem;
+  font-family:'DM Sans',sans-serif;
+  font-size:0.9rem;font-weight:500;
+  cursor:pointer;
+  letter-spacing:0.04em;
+  transition:background 0.18s;
+}
+.save-btn:hover{background:#B84D65;}
+
+@media(max-width:580px){
+  .day-grid{grid-template-columns:repeat(10,1fr);}
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .tasks-grid{grid-template-columns:1fr;}
+  .header{padding:1rem;}
+  .main{padding:1.25rem 1rem;}
+  .logo-script{font-size:1.6rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <div class="logo-script">Srish 75</div>
+    <div class="logo-sub" id="header-sub">Starting June 24, 2026</div>
+  </div>
+  <div class="streak-pill">
+    <span class="streak-flame">🌸</span>
+    <div class="streak-info">
+      <div class="streak-num" id="streak-num">0</div>
+      <div class="streak-label">day streak</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="quote-block">
+    <div class="quote-text" id="daily-quote">Loading your affirmation…</div>
+    <div class="quote-meta" id="quote-day"></div>
+  </div>
+
+  <div class="progress-section">
+    <div class="label">Overall progress <span class="label-tag" id="progress-label">Day 0 of 75</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <div class="progress-meta">
+      <span id="days-done-label">0 days fully completed</span>
+      <span id="days-left-label">75 to go</span>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-n" id="stat-complete">0</div>
+      <div class="stat-l">Complete days</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" id="stat-streak">0</div>
+      <div class="stat-l">Current streak</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" id="stat-rate">0%</div>
+      <div class="stat-l">Task rate</div>
+    </div>
+  </div>
+
+  <div class="grid-section">
+    <div class="label">Your 75 days <span class="label-tag">tap any day to log</span></div>
+    <div class="day-grid" id="day-grid"></div>
+    <div class="legend">
+      <div class="leg"><div class="leg-dot" style="background:var(--rose);border:1.5px solid var(--rose-deep)"></div>Complete</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--done-fill);border:1.5px solid var(--done-border)"></div>Partial</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--white);border:2px solid var(--rose-deep)"></div>Today</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--white);border:1.5px solid var(--ink-faint)"></div>Upcoming</div>
+    </div>
+  </div>
+
+  <div class="habit-section">
+    <div class="label">Habits at a glance</div>
+    <div id="habit-rows"></div>
+  </div>
+
+</div>
+
+<!-- SHEET PANEL -->
+<div class="overlay" id="overlay" onclick="overlayClick(event)">
+  <div class="sheet">
+    <button class="sheet-close" onclick="closeSheet()">✕</button>
+    <div class="sheet-day" id="sheet-day">Day 1</div>
+    <div class="sheet-date" id="sheet-date"></div>
+    <div class="sheet-progress">
+      <div class="sheet-progress-track"><div class="sheet-progress-fill" id="sheet-prog-fill" style="width:0%"></div></div>
+      <div class="sheet-pct" id="sheet-pct">0 / 12</div>
+    </div>
+    <div class="tasks-grid" id="tasks-grid"></div>
+    <div class="notes-label">Notes & reflections</div>
+    <textarea class="notes-field" id="notes-field" placeholder="How did it go? Any wins, struggles, feelings…"></textarea>
+    <button class="save-btn" onclick="saveDay()">Save day</button>
+  </div>
+</div>
+
+<script>
+const START_DATE = new Date('2026-06-24');
+const TASKS = [
+  {id:'steps',   label:'10,000 steps'},
+  {id:'ai',      label:'1 hr AI course'},
+  {id:'research',label:'1 hr biz research'},
+  {id:'workout', label:'1 workout'},
+  {id:'diet',    label:'No cheat meals'},
+  {id:'alcohol', label:'No alcohol'},
+  {id:'water',   label:'4L water'},
+  {id:'read',    label:'Read 10 pages'},
+  {id:'photo',   label:'Progress photo'},
+  {id:'skin',    label:'Skincare routine'},
+  {id:'journal', label:'Journal entry'},
+  {id:'meditate',label:'Meditation'},
+];
+const QUOTES=[
+  "Every day you complete is a vote for the person you're becoming.",
+  "Discipline is choosing between what you want now and what you want most.",
+  "The only bad workout is the one that didn't happen.",
+  "Small steps every day lead to massive change.",
+  "Your future self is watching. Make her proud.",
+  "Consistency is the bridge between goals and accomplishment.",
+  "She believed she could, so she did.",
+  "Progress, not perfection.",
+  "The woman who gets up is so much stronger than the one who never fell.",
+  "Hard days are the best days — that's when champions are made.",
+  "Do it for the version of you waiting on the other side.",
+  "Strength grows in the moments you think you can't go on but keep going anyway.",
+  "Your body can stand almost anything. It's your mind you have to convince.",
+  "A year from now you'll wish you had started today.",
+  "Be the girl who decided to go for it.",
+  "Success is the sum of small efforts repeated day after day.",
+  "You are one decision away from a completely different life.",
+  "Doubt kills more dreams than failure ever will.",
+  "The pain you feel today will be the strength you feel tomorrow.",
+  "She is not perfect but she is trying — and that is everything.",
+  "Do something today that your future self will thank you for.",
+  "Rise up and attack the day with enthusiasm.",
+  "Believe you can and you're halfway there.",
+  "Take care of your body — it's the only place you have to live.",
+  "What you do every day matters more than what you do once in a while.",
+  "She turned her can'ts into cans and her dreams into plans.",
+  "Darling, you are a work in progress — and that's a beautiful thing.",
+  "The secret of getting ahead is getting started.",
+  "You didn't come this far to only come this far.",
+  "One day at a time. That's all you need.",
+  "Your habits define your future.",
+  "Make yourself proud.",
+  "She remembered who she was and the game changed.",
+  "Don't stop when you're tired. Stop when you're done.",
+  "Results happen over time, not overnight. Stay consistent.",
+  "You are stronger than you know.",
+  "Keep going. Everything you need will come at the perfect time.",
+  "Energy flows where intention goes.",
+  "Today is another chance to get better.",
+  "Focus on progress, not perfection.",
+  "You've got this. You really, truly do.",
+  "Nothing worth having comes easy.",
+  "The hard days are what make you stronger.",
+  "Wake up. Work. Look hot. Win.",
+  "Today's me is a gift to tomorrow's me.",
+  "Glow up season is every season.",
+  "Dream big. Work hard. Stay focused. Shine.",
+  "Strong is the new beautiful.",
+  "She woke up and decided to bloom.",
+  "You are your only competition.",
+  "Clarity comes from action, not thought.",
+  "Trust the process. Love the journey.",
+  "One more rep. One more page. One more day.",
+  "Create the life you can't wait to wake up to.",
+  "Your dedication is your destiny.",
+  "Be the energy you want to attract.",
+  "Own your morning. Elevate your life.",
+  "Bloom where you are planted.",
+  "Work hard in silence. Let success make the noise.",
+  "She is a work of art in progress.",
+  "You're on day {day} — that's not a small thing.",
+  "Keep showing up. That's the whole secret.",
+  "Build the life, then live it.",
+  "Day {day}. Still here. Still growing. Still her.",
+  "Warrior mode: always activated.",
+  "Let your results do the talking.",
+  "Every single day is a fresh start.",
+  "The version of you from day 1 would be so proud right now.",
+  "75 days to reinvent yourself. You're doing it.",
+  "Less talk. More do. You're almost there.",
+  "She did it one tiny habit at a time.",
+  "Rest if you must, but don't you quit.",
+  "You are becoming someone extraordinary.",
+  "Finish what you started.",
+  "Less scrolling. More doing. Less comparing. More becoming.",
+];
+
+let currentIdx=null;
+let tempData={};
+const load=()=>JSON.parse(localStorage.getItem('75day')||'{}');
+const persist=(d)=>localStorage.setItem('75day',JSON.stringify(d));
+
+function todayIdx(){
+  const t=new Date();t.setHours(0,0,0,0);
+  const s=new Date(START_DATE);s.setHours(0,0,0,0);
+  return Math.floor((t-s)/86400000);
+}
+function dayDate(i){const d=new Date(START_DATE);d.setDate(d.getDate()+i);return d;}
+function fmtDate(d){return d.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});}
+function isComplete(dd){return dd&&dd.tasks&&TASKS.every(t=>dd.tasks[t.id]);}
+function countDone(dd){return dd&&dd.tasks?TASKS.filter(t=>dd.tasks[t.id]).length:0;}
+
+function calcStreak(data,ti){
+  let s=0;
+  for(let i=ti;i>=0;i--){if(isComplete(data[i]))s++;else break;}
+  return s;
+}
+
+function renderQuote(ti){
+  const i=Math.max(0,Math.min(ti,QUOTES.length-1));
+  document.getElementById('daily-quote').textContent='\u201c'+QUOTES[i].replace('{day}',ti+1)+'\u201d';
+  document.getElementById('quote-day').textContent='Day '+(ti+1)+' affirmation';
+}
+
+function renderGrid(data,ti){
+  const g=document.getElementById('day-grid');g.innerHTML='';
+  for(let i=0;i<75;i++){
+    const c=document.createElement('div');c.className='day-cell';c.textContent=i+1;
+    if(i===ti)c.classList.add('today');
+    if(i>ti)c.classList.add('future');
+    else if(isComplete(data[i]))c.classList.add('complete');
+    else if(countDone(data[i])>0)c.classList.add('partial');
+    if(i<=ti)c.onclick=()=>openSheet(i);
+    g.appendChild(c);
+  }
+}
+
+function renderHabits(data,ti){
+  const w=document.getElementById('habit-rows');w.innerHTML='';
+  const elapsed=ti+1;
+  TASKS.forEach(t=>{
+    let ct=0;
+    for(let i=0;i<=ti;i++)if(data[i]&&data[i].tasks&&data[i].tasks[t.id])ct++;
+    const pct=elapsed>0?Math.round((ct/elapsed)*100):0;
+    const row=document.createElement('div');row.className='habit-row';
+    row.innerHTML=`<span class="habit-name">${t.label}</span>
+      <div class="habit-bar-bg"><div class="habit-bar-fill" style="width:${pct}%"></div></div>
+      <span class="habit-ct">${ct}/${elapsed}</span>`;
+    w.appendChild(row);
+  });
+}
+
+function renderStats(data,ti){
+  const streak=calcStreak(data,ti);
+  let comp=0,total=0;
+  const possible=(ti+1)*TASKS.length;
+  for(let i=0;i<=ti;i++){if(isComplete(data[i]))comp++;total+=countDone(data[i]);}
+  const rate=possible>0?Math.round((total/possible)*100):0;
+  const dayNum=Math.min(ti+1,75);
+  document.getElementById('streak-num').textContent=streak;
+  document.getElementById('stat-complete').textContent=comp;
+  document.getElementById('stat-streak').textContent=streak;
+  document.getElementById('stat-rate').textContent=rate+'%';
+  document.getElementById('progress-label').textContent='Day '+dayNum+' of 75';
+  document.getElementById('progress-fill').style.width=Math.round((dayNum/75)*100)+'%';
+  document.getElementById('days-done-label').textContent=comp+' days fully completed';
+  document.getElementById('days-left-label').textContent=(75-dayNum)+' days left';
+  document.getElementById('header-sub').textContent='Day '+dayNum+' · Started June 24, 2026';
+}
+
+function updateSheetProgress(){
+  const done=TASKS.filter(t=>tempData.tasks&&tempData.tasks[t.id]).length;
+  const pct=Math.round((done/TASKS.length)*100);
+  document.getElementById('sheet-prog-fill').style.width=pct+'%';
+  document.getElementById('sheet-pct').textContent=done+' / '+TASKS.length;
+}
+
+function openSheet(idx){
+  currentIdx=idx;
+  const data=load();
+  tempData=JSON.parse(JSON.stringify(data[idx]||{tasks:{},notes:''}));
+  const date=dayDate(idx);
+  document.getElementById('sheet-day').textContent='Day '+(idx+1);
+  document.getElementById('sheet-date').textContent=fmtDate(date);
+  const grid=document.getElementById('tasks-grid');grid.innerHTML='';
+  TASKS.forEach(t=>{
+    const done=!!(tempData.tasks&&tempData.tasks[t.id]);
+    const pill=document.createElement('div');
+    pill.className='task-pill'+(done?' done':'');
+    pill.dataset.id=t.id;
+    pill.innerHTML=`<div class="pill-circle">${done?'✓':''}</div><span class="pill-label">${t.label}</span>`;
+    pill.onclick=()=>toggleTask(t.id,pill);
+    grid.appendChild(pill);
+  });
+  document.getElementById('notes-field').value=tempData.notes||'';
+  updateSheetProgress();
+  document.getElementById('overlay').classList.add('open');
+}
+
+function toggleTask(id,pill){
+  if(!tempData.tasks)tempData.tasks={};
+  tempData.tasks[id]=!tempData.tasks[id];
+  pill.classList.toggle('done',!!tempData.tasks[id]);
+  pill.querySelector('.pill-circle').textContent=tempData.tasks[id]?'✓':'';
+  updateSheetProgress();
+}
+
+function saveDay(){
+  tempData.notes=document.getElementById('notes-field').value;
+  const data=load();data[currentIdx]=tempData;persist(data);
+  closeSheet();init();
+}
+
+function closeSheet(){document.getElementById('overlay').classList.remove('open');}
+function overlayClick(e){if(e.target===document.getElementById('overlay'))closeSheet();}
+
+function init(){
+  const ti=Math.min(Math.max(todayIdx(),0),74);
+  const data=load();
+  renderQuote(ti);renderGrid(data,ti);renderStats(data,ti);renderHabits(data,ti);
+}
+init();
+</script>
+</body>
+</html>
